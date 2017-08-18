@@ -1,7 +1,13 @@
 <template>
   <div id="app">
-    <sidebar></sidebar>
-    <home></home>
+    <div class="left">
+      <sidebar></sidebar>
+    </div>
+    <div class="right">
+      <keep-alive>
+        <router-view></router-view>
+      </keep-alive>
+    </div>
   </div>
 </template>
 
@@ -20,8 +26,9 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
 #app
   display flex
-  .sidebar
-    flex 0 0 200px
-  .home
+  .left
+    background #324157
+  .right
     flex 1
+    background #fff
 </style>

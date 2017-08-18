@@ -12,11 +12,15 @@
         </div>
         <div class="input-item">
           <label for="">车辆类型</label>
-          <input class="content" placeholder="请选择"></input>
+          <el-select class="content no-border" v-model="value" placeholder="请选择">
+            <el-option v-for="item in carTypes" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+          </el-select>
         </div>
         <div class="input-item">
           <label for="">租车日期</label>
-          <input class="content" placeholder="请输入"></input>
+          <el-date-picker v-model="value1" class="content no-border" type="date" placeholder="选择日期" >
+          </el-date-picker>
         </div>
         <div class="input-item">
           <label for="">客户姓名</label>
@@ -27,21 +31,52 @@
           <input class="content" placeholder="请输入"></input>
         </div>
         <div class="input-item">
-          <label for="">车辆类型</label>
-          <input class="content" placeholder="请选择"></input>
+          <label for="">客户来源</label>
+          <el-select v-model="value" class="content no-border" placeholder="请选择">
+            <el-option v-for="item in voSources" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+          </el-select>
         </div>
       </div>
+      <div class="search-btn">
+        <el-button>查询</el-button>
+      </div>
     </div>
-    <div class="form-content"></div>
-    <div class="pagination"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app',
   data() {
     return {
+      carTypes: [{
+        value: '选项1',
+        label: '普通车'
+      }, {
+        value: '选项2',
+        label: '山地车'
+      }, {
+        value: '选项3',
+        label: '亲子车'
+      }, {
+        value: '选项4',
+        label: '旅游车'
+      }],
+      voSources: [{
+        value: '选项1',
+        label: '普通车'
+      }, {
+        value: '选项2',
+        label: '山地车'
+      }, {
+        value: '选项3',
+        label: '亲子车'
+      }, {
+        value: '选项4',
+        label: '旅游车'
+      }],
+      value: '',
+      value1: '2015-10-12'
     }
   }
 }
@@ -50,9 +85,9 @@ export default {
 <style scoped lang="stylus" rel="stylesheet/stylus">
 .baseform
   width 100%
-  height 100%
   background #f5f5f5
   .panel
+    position relative
     background #fff
   .input-content
     width 1016px
@@ -76,4 +111,17 @@ export default {
         color #999
         border 1px solid #f2f2f2
         outline none
+        &.no-border
+          border none
+  .search-btn
+    position absolute
+    right 100px
+    bottom 20px
+    height 30px
+    line-height 30px
+    .el-button
+      width 90px
+      background #31ca6f
+      color #fff
+      outline none
 </style>
